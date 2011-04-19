@@ -1,8 +1,6 @@
 # Formbuilder
 ## Lets you build forms easily, pre-populate them, show errors, and retain $_POST data
 
-Fire Log is a spark that lets you browse all the log files in your application/logs directory. 
-
 - Build a div wrapper, form label and input field with one php method call
 - Pre-Populate the form by setting formbuilder->defaults from your controller
 - Retain POST values on page refresh, form is auto populated with POST
