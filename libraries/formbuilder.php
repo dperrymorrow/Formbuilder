@@ -286,7 +286,8 @@ class Formbuilder{
 		$fieldOptions['id'] = $this->_auto_id( $fieldOptions, $var );
 
 		$atts = $this->attribute_string( $fieldOptions );
-		$rand = random_string( 'alnum', 5 );
+		// no longer need the rand
+		// $rand = random_string( 'alnum', 5 );
 
 		if( isset( $this->defaults[ $var ] ) and $this->defaults[ $var ] == $value )
 		{
@@ -301,8 +302,8 @@ class Formbuilder{
 			$atts.=' checked="checked"';
 		}
 
-		$ret = "\t\t<input id=\"".$fieldOptions['id']."-".$rand."\" type=\"checkbox\" name=\"$var\" value=\"$value\" $atts/>\n";
-		$ret .= $this->form_label( $label, $fieldOptions['id']."-".$rand, $lblOptions )."\n";
+		$ret = "\t\t<input id=\"".$fieldOptions['id']."\" type=\"checkbox\" name=\"$var\" value=\"$value\" $atts/>\n";
+		$ret .= $this->form_label( $label, $fieldOptions['id'], $lblOptions )."\n";
 		$ret = $this->add_error( $var, $ret, 'checkbox' );
 		return  $ret;
 	}
@@ -313,7 +314,7 @@ class Formbuilder{
 		$fieldOptions['id'] = $this->_auto_id($fieldOptions, $var);
 
 		$atts = $this->attribute_string($fieldOptions);
-		$rand = random_string('alnum', 5 );
+		//$rand = random_string('alnum', 5 );
 
 		if( isset( $this->defaults[ $var ] ) and $this->defaults[ $var ] == $value )
 		{
@@ -329,8 +330,8 @@ class Formbuilder{
 		}
 
 
-		$ret = "\t\t<input id=\"".$fieldOptions['id']."-".$rand."\" type=\"radio\" name=\"$var\" value=\"$value\" $atts/>\n";
-		$ret .= $this->form_label( $label, $fieldOptions['id']."-".$rand, $lblOptions )."\n";
+		$ret = "\t\t<input id=\"".$fieldOptions['id']."\" type=\"radio\" name=\"$var\" value=\"$value\" $atts/>\n";
+		$ret .= $this->form_label( $label, $fieldOptions['id'], $lblOptions )."\n";
 		$ret = $this->add_error( $var, $ret, 'radio' );
 		return  $ret;
 	}
