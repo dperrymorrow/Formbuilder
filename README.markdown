@@ -59,7 +59,7 @@
 
 ## Now setup your view
 
-    <?php
+  <?php
   /*
   * the formbuilder->defaults array pre-populates the form
   * if there are form validation errors on submit, they will be shown as well.
