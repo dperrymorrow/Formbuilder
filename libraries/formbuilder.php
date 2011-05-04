@@ -1,4 +1,5 @@
-<?php
+<?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
+
 class Formbuilder{
 
 
@@ -7,12 +8,25 @@ class Formbuilder{
 	public $options = array();
 	private $form_id = FALSE;
 
-	function __construct()
+	function __construct($config = array())
 	{
 		$this->CI = &get_instance();
 		$this->CI->load->helper( array( 'form', 'string', 'inflector' ));
 		$this->CI->load->library( array( 'form_validation' ));
-		$this->options = $this->CI->config->item( 'formbuilder' );
+
+		if ( ! empty($config))
+		{
+			$this->initialize($config);
+		}
+	}
+
+	function initialize($config = array())
+	{
+		foreach ($config as $key => $val)
+		{
+			$key = preg_replace("/^formbuilder_/i", '', $key);
+			$this->options[$key] = $val;
+		}
 
 		if( $this->options['error_class'] != NULL )
 		{
@@ -106,14 +120,13 @@ class Formbuilder{
 
 	function close()
 	{
+		$output = form_close()."\n";
 		if( $this->form_id )
 		{
-			return "</form>\n<!-- closing ". $this->form_id ." -->\n";
+			$output .= "<!-- closing ". $this->form_id ." -->\n";
 		}
-		else
-		{
-			return "</form>\n";
-		}
+		return $output;
+
 	}
 
 	function text( $var, $label=null, $lblOptions=null, $fieldOptions=null )
