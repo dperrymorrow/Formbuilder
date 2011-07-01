@@ -1,4 +1,8 @@
 # Formbuilder
+
+## if you are using CI 2.0.2 you need to read this article before using my, or any other sparks for that matter. 2.0.2 has a bug with the loader class that breaks the sparks MY_Loader extension thereof. [http://codefury.net/2011/05/getsparks-org-beta-released-big-changes/](http://codefury.net/2011/05/getsparks-org-beta-released-big-changes/)
+
+
 ## Lets you build forms easily, pre-populate them, show errors, and retain $_POST data
 
 - Build a div wrapper, form label and input field with one php method call
