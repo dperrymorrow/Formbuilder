@@ -211,11 +211,6 @@ class Formbuilder{
 			$return_val = form_prep( $this->CI->input->post( $var ));
 
 		}
-		elseif( isset( $this->defaults[ $var ]))
-		{
-			$return_val =  form_prep($this->defaults[ $var ]);
-
-		}
 		elseif( $default != null )
 		{
 			$return_val = form_prep( $default );
@@ -225,6 +220,19 @@ class Formbuilder{
 		{
 			$return_val =  '';
 		}
+		
+		if( is_array($this->defaults) )
+		{
+			if(isset( $this->defaults[ $var ])) {
+				$return_val =  form_prep($this->defaults[ $var ]);
+			} else {
+				$return_val = '';
+			}
+		} 
+		elseif( is_object($this->defaults) )
+		{
+			$return_val = form_prep($this->defaults->$var);
+		} 
 
 		if( !$boolean )
 		{
