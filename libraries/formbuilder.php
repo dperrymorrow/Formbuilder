@@ -369,9 +369,16 @@ class Formbuilder{
 		{
 			$default = $_POST[ $var ];
 		}
-		elseif( isset( $this->defaults[ $var ] ))
-		{
-			$default = $this->defaults[ $var ];
+		if(is_array($this->defaults))	{
+			if( isset( $this->defaults[ $var ] ))
+			{
+				$default = $this->defaults[ $var ];
+			}
+		} else {
+		if( isset( $this->defaults->$var ))
+			{
+				$default = $this->defaults->$var;
+			}
 		}
 
 		$ret = '';
